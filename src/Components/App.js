@@ -18,6 +18,8 @@ class App extends React.Component
 
       //Todo: put routing here that links to relevant accounts.
 
+      //For every account in data.accounts, create an account and pass it the account.
+
       </div>
     );
   }

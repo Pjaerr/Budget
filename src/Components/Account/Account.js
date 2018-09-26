@@ -3,15 +3,16 @@ import React from 'react';
 import styles from './Account.scss';
 
 import Header from '../Header/Header';
+import Transactions from '../Transactions/Transactions';
 
 const Account = (props) =>
 {
-    const { account, income, outcome } = props.data;
+    const account = props.account;
 
     return (
         <div className={styles.Account}>
             <Header data={props.data} />
-        //! Specific Income/Outcome inside a single component that takes props.data here.
+            <Transactions data={props.data} />
         </div>
     );
 }
