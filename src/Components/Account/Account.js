@@ -7,12 +7,12 @@ import Transactions from '../Transactions/Transactions';
 
 const Account = (props) =>
 {
-    const account = props.account;
+    const { name, balance, income, outcome, transactions } = props.data;
 
     return (
         <div className={styles.Account}>
-            <Header data={props.data} />
-            <Transactions data={props.data} />
+            <Header data={{ name, balance, income, outcome }} />
+            <Transactions data={{ transactions, name }} />
         </div>
     );
 }

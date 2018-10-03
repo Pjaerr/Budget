@@ -6,4 +6,7 @@ $backgroundColour: #F5F5F5;
     width: 100%;
 
     background: $backgroundColour;
+    
+    display: flex;
+    justify-content: center;
 }

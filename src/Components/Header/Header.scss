@@ -1,4 +1,51 @@
-.Overview
+.header
 {
-  background: red;
+  background: #fff;
+
+  text-align: center;
+
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 2.5px 5px 0px, rgba(0, 0, 0, 0.23) -2px 1px 6px 0px;
+}
+
+%accountDetail 
+{
+  display: flex;
+  justify-content: space-between;
+}
+
+$spacingAmount: 2.5px;
+%leftRightSpacing
+{
+  padding-left: $spacingAmount;
+  padding-right: $spacingAmount;
+}
+
+.balance
+{
+  @extend %accountDetail;
+
+  h1
+  {
+    @extend %leftRightSpacing;
+  }
+}
+
+.income
+{
+  @extend %accountDetail;
+
+  h2
+  {
+    @extend %leftRightSpacing;
+  }
+}
+
+.outcome
+{
+  @extend %accountDetail;
+
+  h2
+  {
+    @extend %leftRightSpacing;
+  }
 }

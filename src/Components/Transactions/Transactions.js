@@ -6,12 +6,11 @@ import Transaction from '../Transaction/Transaction';
 
 const Transactions = (props) =>
 {
-    // ! Account should have an array of transactions on it in the data.
-    const account = props.account;
+    const { transactions, name } = props.data;
 
-    let transactions = [];
+    let transactionObjects = [];
 
-    foreach(transaction in account.transactions)
+    transactions.forEach(transaction =>
     {
         let description = transaction.description;
         let date = transaction.date;
@@ -19,12 +18,12 @@ const Transactions = (props) =>
 
         let details = { description, date, amount };
 
-        transactions.push(<Transaction accountName={account.name} details={details} />);
-    }
+        transactionObjects.push(<Transaction accountName={name} details={details} />);
+    });
 
     return (
         <div className={styles.transactions}>
-            {transactions};
+            {transactionObjects}
         </div>
     );
 }
