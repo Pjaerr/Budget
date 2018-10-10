@@ -1,5 +1,4 @@
-
-$backgroundColour: #F5F5F5;
+@import '../utils/sass/variables';
 
 .app
 {
@@ -9,4 +8,6 @@ $backgroundColour: #F5F5F5;
     
     display: flex;
     justify-content: center;
+
+    font-family: $font-family;
 }

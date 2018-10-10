@@ -1,16 +1,35 @@
+@import '../../utils/sass/variables';
+
 .header
 {
   background: #fff;
 
   text-align: center;
 
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 2.5px 5px 0px, rgba(0, 0, 0, 0.23) -2px 1px 6px 0px;
+  width: 100%;
+
+  padding-top: 20px;
 }
 
 %accountDetail 
 {
   display: flex;
   justify-content: space-between;
+
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @media (min-width: 800px)
+  {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+
+  @media (min-width: 500px)
+  {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
 }
 
 $spacingAmount: 2.5px;

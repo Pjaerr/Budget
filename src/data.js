@@ -3,7 +3,7 @@ export default {
   accounts: [
     {
       name: "Test Account",
-      balance: "788",
+      balance: "-788",
       income: "1200",
       outcome: "450",
       transactions: [
@@ -20,4 +20,5 @@ export default {
       ]
     }
   ],
+  currency: '£'
 };
