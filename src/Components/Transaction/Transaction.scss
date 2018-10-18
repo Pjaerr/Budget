@@ -1,0 +1,20 @@
+@import '../../utils/sass/variables';
+
+.transaction 
+{
+    background: #fff;
+
+    font-size: $font-size-small;
+
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.topInfo
+{
+    display: flex;
+    justify-content: space-between;
+
+    font-size: $font-size-medium;
+}

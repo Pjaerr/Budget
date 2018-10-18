@@ -1,0 +1,48 @@
+@import url(https://fonts.googleapis.com/css?family=Fjalla+One);@import url(https://fonts.googleapis.com/css?family=Fjalla+One);@import url(https://fonts.googleapis.com/css?family=Fjalla+One);.App__app___2TJbm {
+  width: 100%;
+  background: #F5F5F5;
+  display: flex;
+  justify-content: center;
+  font-family: "Fjalla One", sans-serif; }
+.Account__Account___DjACT {
+  width: 100%; }
+  @media (min-width: 800px) {
+    .Account__Account___DjACT {
+      width: 800px; } }
+.Header__header___XbemU {
+  background: #fff;
+  text-align: center;
+  width: 100%;
+  padding-top: 20px;
+  margin-bottom: 20px; }
+
+.Header__balance___3Sned, .Header__income___r4uPf, .Header__outcome___2h3Vq {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px; }
+  @media (min-width: 800px) {
+    .Header__balance___3Sned, .Header__income___r4uPf, .Header__outcome___2h3Vq {
+      padding-left: 200px;
+      padding-right: 200px; } }
+  @media (min-width: 500px) {
+    .Header__balance___3Sned, .Header__income___r4uPf, .Header__outcome___2h3Vq {
+      padding-left: 100px;
+      padding-right: 100px; } }
+
+.Header__balance___3Sned h1, .Header__income___r4uPf h2, .Header__outcome___2h3Vq h2 {
+  padding-left: 2.5px;
+  padding-right: 2.5px; }
+.Transaction__transaction___I0g3c {
+  background: #fff;
+  font-size: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px; }
+
+.Transaction__topInfo___2eL03 {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px; }
+
+/*# sourceMappingURL=styles.css.map*/

@@ -20,7 +20,7 @@ const renderIncome = (income) =>
 
   isNegative(income) ? style = negative : style = positive;
 
-  return <span className={styles.income}><h2>Income:</h2> <h2 style={style}>{income}</h2></span>;
+  return <span className={styles.income}><h2>Income:</h2> <h2 style={style}>{toCurrency(income, '£')}</h2></span>;
 }
 
 const renderOutcome = (outcome) =>
@@ -29,7 +29,7 @@ const renderOutcome = (outcome) =>
 
   isNegative(outcome) ? style = negative : style = positive;
 
-  return <span className={styles.outcome}><h2>Outcome:</h2> <h2 style={style}>{outcome}</h2></span>;
+  return <span className={styles.outcome}><h2>Outcome:</h2> <h2 style={style}>{toCurrency(outcome, '£')}</h2></span>;
 }
 
 const Header = (props) =>
