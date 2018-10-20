@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './Transactions.scss';
 
 import Transaction from '../Transaction/Transaction';
+import CreateTransactionForm from '../CreateTransaction/CreateTransactionForm';
 
 class Transactions extends React.Component
 {
@@ -19,9 +20,11 @@ class Transactions extends React.Component
     {
         //Todo: Update external data source/or internal if can't make contact with state.transactions
         // ! ^^ would probs be a function passed down as a prop that goes all the way back up to App.js
+
+
     }
 
-    createTransaction = (amount, date, description) =>
+    createTransaction = ({ amount, date, description }) =>
     {
         let transaction = { description, date, amount };
 
@@ -57,6 +60,8 @@ class Transactions extends React.Component
         return (
             <div className={styles.transactions}>
                 {this.renderTransactions()}
+
+                <CreateTransactionForm createTransaction={this.createTransaction} />
             </div>
         );
     }
