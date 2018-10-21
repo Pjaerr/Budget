@@ -9,6 +9,9 @@ import Account from './Account/Account';
 //! Will be coming from Firebase/External DB eventually.
 import data from '../data';
 
+// ---- Routing ----
+import { Route, BrowserRouter, Switch } from "react-router-dom";
+
 class App extends React.Component 
 {
   constructor(props)
@@ -22,12 +25,13 @@ class App extends React.Component
   {
     let accountObjects = [];
 
-    let overviewData = { name: "Overview", balance: "200", income: "250", outcome: "-50", transactions: [] };
+    let overviewData = { name: "Overview", transactions: [] };
 
     data.accounts.forEach(account =>
     {
-      //! Convert to instead of flat out rendering the accounts, add them to routes
-      accountObjects.push(<Account name={account.name} data={account} />)
+      let path = "/" + account.name.replace(/\s+/g, '-').toLowerCase();
+
+      accountObjects.push(<Route path={path} component={() => <Account data={account} />} />);
 
       account.transactions.forEach(transaction =>
       {
@@ -49,10 +53,13 @@ class App extends React.Component
   {
     return (
       <div className={styles.app}>
-        {/*Create a new data strucure made up of all transactions from all accounts and pass in here*/}
-        <Account isOverview={true} name={"Overview"} data={this.state.overviewData} />
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={() => <Account data={this.state.overviewData} />} />
 
-        {/* {this.state.accountObjects} */}
+            {this.state.accountObjects}
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }

@@ -5,6 +5,8 @@ import styles from './Account.scss';
 import Header from '../Header/Header';
 import Transactions from '../Transactions/Transactions';
 
+import { isNegative } from '../../utils/js/utils';
+
 /*
     ! Set state here for when the data has changed so that Transactions component can re-render.
 
@@ -15,9 +17,27 @@ import Transactions from '../Transactions/Transactions';
     transactions component.
 */
 
+const calculateAccountBalance = (transactions) =>
+{
+
+}
+
 const Account = (props) => 
 {
-    const { name, balance, income, outcome, transactions } = props.data;
+    const { name, transactions } = props.data;
+
+    let income = 0;
+    let outcome = 0;
+    let balance = 0;
+
+    transactions.forEach(transaction => 
+    {
+        let amount = transaction.amount;
+
+        isNegative(amount) ? outcome += amount : income += amount;
+
+        balance += amount;
+    });
 
     return (
         <div className={styles.Account}>

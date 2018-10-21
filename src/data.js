@@ -4,48 +4,42 @@
 export default {
   accounts: [
     {
-      name: "Test Account",
-      balance: "-788",
-      income: "1200",
-      outcome: "-450",
+      name: "Fake Account",
       transactions: [
         {
           description: "This is a test transaction",
           date: "15-10-18",
-          amount: "1200"
+          amount: 1200
         },
         {
           description: "This is a test transaction, but a bad one",
           date: "29-09-18",
-          amount: "-450"
+          amount: -450
         },
         {
           description: "Rent",
           date: "15-10-18",
-          amount: "-350"
+          amount: -350
         }
       ]
     },
     {
       name: "A Different Account",
-      balance: "125",
-      income: "150",
-      outcome: "-25",
       transactions: [
         {
           description: "Gaining money transaction",
           date: "15-10-18",
-          amount: "50"
+          amount: 50
         },
         {
           description: "Losing money transaction",
           date: "29-09-18",
-          amount: "-25"
+          amount: -25
         },
         {
           description: "Test transaction",
           date: "15-10-18",
-          amount: "100"
+          amount: 100
         }
       ]
     }
