@@ -13,15 +13,10 @@ class Transactions extends React.Component
 
         this.state = { transactions: this.props.data.transactions };
 
-        window.transactions = this;
-    }
-
-    pushTransactionsToStorage = () =>
-    {
-        //Todo: Update external data source/or internal if can't make contact with state.transactions
-        // ! ^^ would probs be a function passed down as a prop that goes all the way back up to App.js
-
-
+        if (this.props.data.name === "Fake Account")
+        {
+            window.transaction = this;
+        }
     }
 
     createTransaction = ({ amount, date, description }) =>
@@ -32,7 +27,10 @@ class Transactions extends React.Component
 
         transactions.push(transaction);
 
+        this.props.createTransaction(this.props.data.name, amount, date, description);
+
         this.setState({ transactions });
+        this.props.updateAccountData(transactions);
     }
 
     renderTransactions = () =>
@@ -47,12 +45,21 @@ class Transactions extends React.Component
             let date = transaction.date;
             let amount = transaction.amount;
 
+            let accountName = transaction.account ? transaction.account : name;
+
             let details = { description, date, amount };
 
-            transactionObjects.push(<Transaction key={date + description + amount + new Date() + Math.random()} accountName={name} details={details} />);
+            transactionObjects.push(<Transaction key={date + description + amount + new Date() + Math.random()} accountName={accountName} details={details} />);
         });
 
-        return transactionObjects;
+        if (transactionObjects.length > 0)
+        {
+            return transactionObjects;
+        }
+        else
+        {
+            return <div style={{ display: 'flex', justifyContent: 'center' }}>No Transactions 🤷</div>
+        }
     }
 
     render()

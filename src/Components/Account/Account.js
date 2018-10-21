@@ -5,26 +5,46 @@ import styles from './Account.scss';
 import Header from '../Header/Header';
 import Transactions from '../Transactions/Transactions';
 
-/*
-    ! Set state here for when the data has changed so that Transactions component can re-render.
+import { isNegative } from '../../utils/js/utils';
 
-    probably have local transactions taken from data stored in local state and then pushed
-    up to external data source when properly changed, allowing transactions to update more easily
-    when a transaction is added without having to make an external call, also helps when working
-    in offline mode as don't have to try the external source and wait before actually re-rendering
-    transactions component.
-*/
-
-const Account = (props) => 
+class Account extends React.Component 
 {
-    const { name, balance, income, outcome, transactions } = props.data;
+    constructor(props)
+    {
+        super(props);
 
-    return (
-        <div className={styles.Account}>
-            <Header data={{ name, balance, income, outcome }} />
-            <Transactions data={{ transactions, name }} />
-        </div>
-    );
+        this.state = { name: this.props.data.name, transactions: this.props.data.transactions };
+    }
+
+    updateAccountData = (newTransactions) =>
+    {
+        this.setState({ transactions: newTransactions });
+    }
+
+    render()
+    {
+        const { name, transactions } = this.state;
+
+        let income = 0;
+        let outcome = 0;
+        let balance = 0;
+
+        transactions.forEach(transaction => 
+        {
+            let amount = transaction.amount;
+
+            isNegative(amount) ? outcome += amount : income += amount;
+
+            balance += amount;
+        });
+
+        return (
+            <div className={styles.Account}>
+                <Header data={{ name, balance, income, outcome }} />
+                <Transactions data={{ transactions, name }} updateAccountData={this.updateAccountData} createTransaction={this.props.createTransaction} />
+            </div>
+        );
+    }
 }
 
 export default Account;
