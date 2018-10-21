@@ -7,7 +7,7 @@ import Account from './Account/Account';
 
 // ---- Data ----
 //! Will be coming from Firebase/External DB eventually.
-import data from '../data';
+import { data, createTransaction } from '../data';
 
 // ---- Routing ----
 import { Route, BrowserRouter, Switch } from "react-router-dom";
@@ -31,7 +31,7 @@ class App extends React.Component
     {
       let path = "/" + account.name.replace(/\s+/g, '-').toLowerCase();
 
-      accountObjects.push(<Route path={path} component={() => <Account data={account} />} />);
+      accountObjects.push(<Route path={path} component={() => <Account data={account} createTransaction={createTransaction} />} />);
 
       account.transactions.forEach(transaction =>
       {
@@ -55,7 +55,7 @@ class App extends React.Component
       <div className={styles.app}>
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={() => <Account data={this.state.overviewData} />} />
+            <Route exact path="/" component={() => <Account data={this.state.overviewData} createTransaction={createTransaction} />} />
 
             {this.state.accountObjects}
           </Switch>
