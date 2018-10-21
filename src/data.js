@@ -25,6 +25,29 @@ export default {
           amount: "-350"
         }
       ]
+    },
+    {
+      name: "A Different Account",
+      balance: "125",
+      income: "150",
+      outcome: "-25",
+      transactions: [
+        {
+          description: "Gaining money transaction",
+          date: "15-10-18",
+          amount: "50"
+        },
+        {
+          description: "Losing money transaction",
+          date: "29-09-18",
+          amount: "-25"
+        },
+        {
+          description: "Test transaction",
+          date: "15-10-18",
+          amount: "100"
+        }
+      ]
     }
   ]
 };

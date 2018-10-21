@@ -11,16 +11,48 @@ import data from '../data';
 
 class App extends React.Component 
 {
+  constructor(props)
+  {
+    super(props);
+
+    this.setupAccounts();
+  }
+
+  setupAccounts = () =>
+  {
+    let accountObjects = [];
+
+    let overviewData = { name: "Overview", balance: "200", income: "250", outcome: "-50", transactions: [] };
+
+    data.accounts.forEach(account =>
+    {
+      //! Convert to instead of flat out rendering the accounts, add them to routes
+      accountObjects.push(<Account name={account.name} data={account} />)
+
+      account.transactions.forEach(transaction =>
+      {
+        overviewData.transactions.push(
+          {
+            description: transaction.description,
+            date: transaction.date,
+            amount: transaction.amount,
+            account: account.name
+          }
+        );
+      });
+    });
+
+    this.state = { overviewData, accountObjects };
+  }
+
   render()
   {
     return (
       <div className={styles.app}>
+        {/*Create a new data strucure made up of all transactions from all accounts and pass in here*/}
+        <Account isOverview={true} name={"Overview"} data={this.state.overviewData} />
 
-        <Account data={data.accounts[0]} />
-        {/*Todo: put routing here that links to relevant accounts*/}
-
-        {/*For every account in data.accounts, create an account and pass it the account.*/}
-
+        {/* {this.state.accountObjects} */}
       </div>
     );
   }

@@ -44,9 +44,11 @@ class Transactions extends React.Component
             let date = transaction.date;
             let amount = transaction.amount;
 
+            let accountName = transaction.account ? transaction.account : name;
+
             let details = { description, date, amount };
 
-            transactionObjects.push(<Transaction key={date + description + amount + new Date() + Math.random()} accountName={name} details={details} />);
+            transactionObjects.push(<Transaction key={date + description + amount + new Date() + Math.random()} accountName={accountName} details={details} />);
         });
 
         return transactionObjects;
