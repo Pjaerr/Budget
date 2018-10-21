@@ -13,7 +13,11 @@ class CreateTransactionForm extends React.Component
 
   handleSubmit = () =>
   {
-    this.props.createTransaction(this.state);
+    const data = { ...this.state };
+
+    data.amount = parseFloat(data.amount);
+
+    this.props.createTransaction(data);
 
     this.setState({ amount: '', date: '01-01-01', description: '' });
   }
@@ -21,6 +25,7 @@ class CreateTransactionForm extends React.Component
   handleChange = (event) =>
   {
     let formElementName = event.target.name;
+    let value = event.target.value;
 
     this.setState({ [formElementName]: event.target.value });
   }

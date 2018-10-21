@@ -5,13 +5,15 @@ import styles from './Transactions.scss';
 import Transaction from '../Transaction/Transaction';
 import CreateTransactionForm from '../CreateTransaction/CreateTransactionForm';
 
+import FloatingActionButton from '../FloatingActionButton/FloatingActionButton';
+
 class Transactions extends React.Component
 {
     constructor(props)
     {
         super(props);
 
-        this.state = { transactions: this.props.data.transactions };
+        this.state = { transactions: this.props.data.transactions, showCreateTransactionForm: false };
 
         if (this.props.data.name === "Fake Account")
         {
@@ -68,7 +70,10 @@ class Transactions extends React.Component
             <div className={styles.transactions}>
                 {this.renderTransactions()}
 
-                <CreateTransactionForm createTransaction={this.createTransaction} />
+                <FloatingActionButton onClick={() => this.setState({ showCreateTransactionForm: !this.state.showCreateTransactionForm })} />
+
+                {this.state.showCreateTransactionForm ? <CreateTransactionForm createTransaction={this.createTransaction} /> : null}
+
             </div>
         );
     }
